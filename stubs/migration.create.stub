@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('{{ table }}', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('created_at')->default(0)->comment('创建时间');
+            $table->unsignedInteger('updated_at')->default(0)->comment('修改时间');
+            $table->unsignedInteger('deleted_at')->nullable()->default(null)->comment('删除时间');
+            $table->comment('{{ table }}');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('{{ table }}');
+    }
+};
